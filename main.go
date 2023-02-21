@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"funtemps/conv"
 )
 
 var fahr float64
@@ -28,35 +29,35 @@ func main() {
 
 	// kelvin to celsius
 	if isFlagPassed("K") && out == "C" {
-		output := cel + 273.15
+		output := conv.KelvinToCelsius(kel)
 		fmt.Printf("%v K er %v C", kel, output)
 	}
 	// cel to kel
 	if isFlagPassed("C") && out == "K" {
-		output := cel + 273.15
+		output := conv.CelsiusToKelvin(cel)
 		fmt.Printf("%v C er %v K", cel, output)
 	}
 
 	// cel to far
 	if isFlagPassed("C") && out == "F" {
-		output := cel*(9/5) + 32
+		output := conv.CelsiusToFarhenheit(cel)
 		fmt.Printf("%v C er %v F", cel, output)
 
 	}
 	// far to cel
 	if isFlagPassed("F") && out == "C" {
-		output := (fahr - 32) * 5 / 9
+		output := conv.FarhenheitToCelsius(fahr)
 		fmt.Printf("%v F er %v C", fahr, output)
 	}
 
 	// kel to far
 	if isFlagPassed("F") && out == "C" {
-		output := (kel-273.15)*(9/5) + 32
+		output := conv.KelvinToFarhenheit(kel)
 		fmt.Printf("%v F er %v C", fahr, output)
 	}
 	// far to kel
 	if isFlagPassed("K") && out == "F" {
-		output := (fahr-32)*(5/9) + 273.15
+		output := conv.FarhenheitToKelvin(fahr)
 		fmt.Printf("%v K er %v F", kel, output)
 	}
 
